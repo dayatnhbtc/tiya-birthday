@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Untuk Istriku 🌙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <!-- AUDIO -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="Kekasih Impian.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div id="music-btn" onclick="toggleMusic()">
+        <div class="vinyl" id="vinyl">
+            <div class="vinyl-center"></div>
+        </div>
+        <div class="music-info">
+            <span class="music-title">Kekasih Impian</span>
+            <span class="music-status" id="musicStatus">Ketuk untuk putar ♪</span>
+        </div>
+        <span class="music-icon" id="musicIcon">▶</span>
+    </div>
+
+    <canvas id="particles"></canvas>
+
+    <div id="app">
+
+        <!-- ════════════════ SLIDE 0 — LANDING ════════════════ -->
+        <div class="slide bg-night active" data-slide="0">
+            <div class="landing-ring">
+                <span class="moon">🌙</span>
+            </div>
+            <div class="slide-label" style="color:rgba(255,255,255,0.5)">Untuk yang paling istimewa</div>
+            <h1 class="slide-title" style="font-size:clamp(20px,5.5vw,28px)">
+                Assalamualaikum,<br />
+                <span class="highlight">Humaira-ku…</span>
+            </h1>
+            <p class="slide-body">
+                Ada paket spesial nih<br />
+                boleh masuk?
+            </p>
+            <button class="btn btn-primary" onclick="nextSlide()">🚪 Ketuk Pintu</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 1 — PASSWORD ════════════════ -->
+        <div class="slide bg-dawn" data-slide="1">
+            <div class="stars">✦ ✦ ✦</div>
+            <div class="slide-label">Verifikasi Identitas</div>
+            <h2 class="slide-title" style="color:white">
+                Eits, password<br />dulu dong ✋
+            </h2>
+            <div class="password-box">
+                <p class="password-hint">Tanggal berapa kita <em>sah</em>? (DDMMYYYY)</p>
+                <input class="password-input" id="pwInput" type="tel" maxlength="8" placeholder="· · · · · · · ·"
+                    oninput="checkPassword()" />
+                <p class="error-msg" id="errMsg">Hmm, itu bukan tanggal kita sayang 🙈</p>
+            </div>
+            <p style="font-size:12px;opacity:0.35;margin-top:18px">Petunjuk: 30 Maret 2026</p>
+        </div>
+
+        <!-- ════════════════ SLIDE 2 — INTRO BERHASIL ════════════════ -->
+        <div class="slide bg-dawn" data-slide="2">
+            <span class="emoji-hero">🥹</span>
+            <div class="slide-label">Benar! Itu tanggal kita</div>
+            <h2 class="slide-title" style="color:white">
+                Kamu berhasil masuk..<br />
+                <span class="highlight">Karena cuma kamu yang tau.</span>
+            </h2>
+            <p class="slide-body">
+                Sebelum lanjut, tarik napas dulu.<br />
+                Cerita ini akan membawamu merenung sebentar. 💨
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Siap ➜</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 3 — CV ════════════════ -->
+        <div class="slide bg-night" data-slide="3">
+            <span class="emoji-hero" style="animation-delay:0.3s">📄</span>
+            <div class="slide-label">Awal Mula</div>
+            <h2 class="slide-title">
+                Semua berawal dari <br />
+                <span class="highlight">pencarian jati diriku.</span>
+            </h2>
+            <p class="slide-body">
+                Sampai akhirnya kutuangkan semua 'kebutuhanku' dalam sebuah CV
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 4 — RAGU ════════════════ -->
+        <div class="slide bg-night" data-slide="4">
+            <span class="emoji-hero" style="font-size:50px">😰</span>
+            <div class="slide-label">Sebuah Keberanian</div>
+            <h2 class="slide-title">
+                Jujur, aku awalnya<br />
+                <span class="highlight-rose">ragu.</span>
+            </h2>
+            <p class="slide-body">
+                Berkali-kali aku buka tutup CV-mu. Tapi setiap yang kubutuhkan ada di sana. Akhirnya aku beranikan diri
+            </p>
+            <p>mengajukan taaruf ke kamu.</p>
+
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 5 — MENUNGGU ════════════════ -->
+        <div class="slide bg-night" data-slide="5">
+            <span class="emoji-hero">⏳</span>
+            <div class="slide-label">Drama Jam Terakhir</div>
+            <h2 class="slide-title">
+                Deg-degan di<br />
+                <span class="highlight">jam-jam terakhir.</span>
+            </h2>
+            <p class="slide-body">
+                Di grup taaruf itu, aku menunggu deg-degan. Nyaris putus asa di jam-jam terakhir sebelum waktu
+                verifikasi
+                habis...
+                Takut jika pintu ini tertutup sebelum sempat aku ketuk.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 6 — JAWABAN PERTAMA ════════════════ -->
+        <div class="slide bg-golden" data-slide="6">
+            <span class="emoji-hero">💬</span>
+            <div class="slide-label">Satu Kalimat Mengubah Segalanya</div>
+            <h2 class="slide-title">
+                Lalu kamu menjawab<br />
+                <span class="highlight">pertanyaan pertamaku.</span>
+            </h2>
+            <p class="slide-body">
+                Satu jawaban darimu — sopan, cerdas, dan tulus — seketika melenyapkan rasa takutku untuk menikah. Aku
+                tidak menyangka secepat itu.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 7 — SATU BULAN ════════════════ -->
+        <div class="slide bg-golden" data-slide="7">
+            <span class="emoji-hero" style="font-size:42px">🌿</span>
+            <div class="slide-label">Satu Bulan Mengenalmu</div>
+            <h2 class="slide-title">
+                Kamu bukan<br />
+                orang yang biasa.
+            </h2>
+            <p class="slide-body">
+                Sebulan di grup taaruf, lewat tulisan-tulisanmu — aku sadar bahasamu indah, mencerminkan hatimu.
+                <span class="highlight">Kamu istimewa.</span>
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 8 — PERJALANAN KHITBAH ════════════════ -->
+        <div class="slide bg-sage" data-slide="8">
+            <span class="emoji-hero">🚗</span>
+            <div class="slide-label">Langkah Nyata</div>
+            <h2 class="slide-title">
+                Allah mempermudah<br />
+                <span class="highlight-sage">jalanku ke rumahmu.</span>
+            </h2>
+            <p class="slide-body">
+                Dengan bismillah dan jantung yang berdebar, aku melangkah. Berbincang dengan orang tuamu. Menyampaikan
+                niatku.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 9 — PERTAMA KALI MELIHAT ════════════════ -->
+        <div class="slide bg-sage" data-slide="9">
+            <span class="emoji-hero">🤍</span>
+            <div class="slide-label">Momen Itu</div>
+            <h2 class="slide-title">
+                Saat kamu keluar<br />pertama kali…
+            </h2>
+            <p class="slide-body">
+                Duniaku hening sejenak. Aku tertegun — lidahku kelu, kata-kata lari entah ke mana.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 10 — SHE IS THE ONE ════════════════ -->
+        <div class="slide bg-sage" data-slide="10">
+            <span class="emoji-hero" style="font-size:42px">✨</span>
+            <div class="slide-label">Keyakinan</div>
+            <h2 class="slide-title italic">
+                "She is the one."
+            </h2>
+            <p class="slide-body">
+                Melihat sikapmu yang kalem, perhatianmu ke Mamakmu — hatiku berbisik pelan tapi pasti. Kamu adalah
+                ketenangan yang aku cari, <span class="highlight-sage">dan aku sudah tidak perlu mencari lagi.</span>
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 11 — JAM 3 PAGI ════════════════ -->
+        <div class="slide bg-night" data-slide="11">
+            <span class="emoji-hero">🌌</span>
+            <div class="slide-label">Jam 3 Pagi</div>
+            <h2 class="slide-title">
+                Saat kamu membalas chatku<br />
+                <span class="highlight">Jantungku meledak.</span>
+            </h2>
+            <p class="slide-body">
+                Ku baca setiap kata berkali-kali. Meyakinkan diri bahwa ini bukan mimpi.
+            </p>
+            <div class="divider"></div>
+            <p class="slide-body" style="font-size:clamp(17px,4.5vw,22px); font-weight:600; opacity:1">
+                Kamu.<br />Menerima.<br />Aku.
+            </p>
+            <button class="btn btn-primary" onclick="nextSlide()" style="margin-top:24px">Lanjutkan →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 12 — KHITBAH RESMI ════════════════ -->
+        <div class="slide bg-blush" data-slide="12">
+            <span class="emoji-hero">💍</span>
+            <div class="slide-label">Khitbah Resmi</div>
+            <h2 class="slide-title">
+                Langkah selanjutnya — <br />
+                <span class="highlight-rose">dua keluarga bertemu.</span>
+            </h2>
+            <p class="slide-body">
+                Dengan bismillah dan doa kedua orang tua, aku datang dengan keluargaku ke rumahmu. Langkah
+                yang mendebarkan paling indah.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Menuju hari besarnya →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 13 — AKAD ════════════════ -->
+        <div class="slide bg-golden" data-slide="13">
+            <span class="emoji-hero">🕌</span>
+            <div class="slide-label">Hari yang Paling Ditunggu</div>
+            <h2 class="slide-title">
+                30 Maret 2026.
+            </h2>
+            <div class="akad-box">
+                <div class="akad-date">SAH.</div>
+                <div class="akad-label">SATU KATA YANG MENGUBAH SEMUANYA</div>
+            </div>
+            <p class="slide-body" style="margin-top:16px">
+                Satu jabat tangan, satu tarikan napas, dan kata itu menggema. Kamu resmi jadi istriku, aku resmi jadi
+                imammu.
+            </p>
+            <button class="btn btn-primary" onclick="nextSlide()" style="margin-top:20px">Masya Allah →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 14 — 5 HARI ════════════════ -->
+        <div class="slide bg-blush" data-slide="14">
+            <span class="emoji-hero" style="font-size:48px">🏠</span>
+            <div class="slide-label">Lima Hari yang Luar Biasa</div>
+            <h2 class="slide-title">
+                Sudah 5 hari kita<br />
+                <span class="highlight-rose">halal bersama.</span>
+            </h2>
+            <p class="slide-body">
+                Tidak ada lagi jarak. Tidak ada lagi layar HP yang membatasi. Tidak ada lagi pesan yang harus dijaga
+                jaraknya. Sekarang kita satu rumah, satu atap, satu hari-hari.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 15 — ULANG TAHUN ════════════════ -->
+        <div class="slide bg-golden" data-slide="15">
+            <div class="cake-wrap">
+                <div class="cake-glow"></div>
+                <span
+                    style="font-size:72px; position:relative; z-index:1; animation: float 3s ease-in-out infinite;">🎂</span>
+            </div>
+            <div class="slide-label">4 April 2026</div>
+            <h2 class="slide-title">
+                Selamat Ulang Tahun<br />pertama sebagai
+                <span class="highlight">istriku.</span>
+            </h2>
+            <p class="slide-body">
+                5 hari jadi istri, dan ini sudah ulang tahunmu. <br />MasyaAllah, Allah sungguh Maha Indah mengatur
+                waktu. 🌸
+            </p>
+            <button class="btn btn-primary" onclick="nextSlide()" style="margin-top:20px">Buka pesan selanjutnya
+                💌</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 16 — TERIMA KASIH ════════════════ -->
+        <div class="slide bg-golden" data-slide="16">
+            <span class="emoji-hero">🤲</span>
+            <div class="slide-label">Dari Suamimu</div>
+            <h2 class="slide-title">
+                Terima kasih sudah<br />
+                <span class="highlight">hadir.</span>
+            </h2>
+            <p class="slide-body">
+                Terima kasih sudah menyempurnakan separuh agamaku. Terima kasih sudah memilihku jadi imam dalam shalatmu
+                — dan dalam hidupmu. Itu bukan hal kecil. Itu semuanya.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Lanjut →</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 17 — DOA ════════════════ -->
+        <div class="slide bg-sage" data-slide="17">
+            <span class="emoji-hero" style="font-size:42px">🌿</span>
+            <div class="slide-label">Doa Kita Berdua</div>
+            <h2 class="slide-title">
+                Mari menua bersama,<br />
+                <span class="highlight-sage">sampai Jannah.</span>
+            </h2>
+            <p class="slide-body">
+                Aku tahu aku masih banyak kurangnya. Tapi ayo kita perbaiki sama-sama, ya? Pelan-pelan. Dengan cinta
+                yang lillah. Sampai di titik yang paling indah — bertemu di sana.
+            </p>
+            <button class="btn btn-ghost" onclick="nextSlide()">Ada satu lagi… 👀</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 18 — HARTA KARUN INTRO ════════════════ -->
+        <div class="slide bg-night" data-slide="18">
+            <span class="emoji-hero">🎁</span>
+            <div class="slide-label">Plot Twist</div>
+            <h2 class="slide-title">
+                Sudah cukup<br />
+                <span class="highlight">romantisnya.</span>
+            </h2>
+            <p class="slide-body">
+                Sekarang waktunya main game seru! 🎮<br /><br />
+                Aku sudah menyembunyikan sesuatu. Dan kamu harus menemukannya sendiri.
+            </p>
+            <button class="btn btn-primary" onclick="nextSlide()">Hah, di mana?! 🔍</button>
+        </div>
+
+        <!-- ════════════════ SLIDE 19 — CLUE PILIHAN ════════════════ -->
+        <div class="slide bg-night" data-slide="19">
+            <div class="slide-label">Pilih Petunjukmu</div>
+            <h2 class="slide-title" style="font-size: clamp(18px,5vw,24px)">
+                Clue apa yang kamu<br />
+                <span class="highlight">mau coba dulu?</span>
+            </h2>
+            <div class="clue-opts">
+                <button class="clue-opt" onclick="showClue('lemari')">
+                    <span class="opt-icon">👗</span> Tempat pakaian kita disimpan
+                </button>
+                <button class="clue-opt" onclick="showClue('bantal')">
+                    <span class="opt-icon">🛏️</span> Tempat kepala kita beristirahat
+                </button>
+                <button class="clue-opt" onclick="showClue('sajadah')">
+                    <span class="opt-icon">🧎</span> Tempat kita biasa bersujud
+                </button>
+            </div>
+            <div class="clue-reveal" id="clueReveal">
+                <div class="clue-number">!</div>
+                <p class="clue-reveal-text" id="clueText"></p>
+                <button class="btn btn-ghost" onclick="nextSlide()"
+                    style="margin-top:16px;font-size:13px;padding:10px 22px">Sudah ketemu! ✅</button>
+            </div>
+        </div>
+
+        <!-- ════════════════ SLIDE 20 — PENUTUP ════════════════ -->
+        <div class="slide bg-dawn" data-slide="20">
+            <div class="heart-burst">💕</div>
+            <div class="slide-label">Dari Suamimu, Dengan Cinta</div>
+            <h2 class="slide-title">
+                <em>I love you,<br />
+                    <span class="highlight">Zaujati.</span></em>
+            </h2>
+            <p class="slide-body">
+                Semoga Allah jadikan pernikahan kita penuh berkah, ketenangan, dan saling menguatkan — dunia dan
+                akhirat. Aamiin.
+            </p>
+            <div class="divider"></div>
+            <p class="slide-body" style="font-size:13px; opacity:0.5">🌙 30.03.2026 — selamanya</p>
+        </div>
+
+    </div>
+
+    <!-- Progress & Nav -->
+    <div id="progress"></div>
+    <div id="nav" style="display:none">
+        <button class="nav-btn" id="prevBtn" onclick="prevSlide()">←</button>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">→</button>
+    </div>
+    <div id="counter" style="display:none"></div>
+    <div class="swipe-hint" id="swipeHint" style="display:none; color:rgba(255,255,255,0.4)">Geser atau ketuk →</div>
+
+    <!-- Scripts (order matters: particles → slides → password → clue → music) -->
+    <script src="js/particles.js"></script>
+    <script src="js/slides.js"></script>
+    <script src="js/password.js"></script>
+    <script src="js/clue.js"></script>
+    <script src="js/music.js"></script>
+
+</body>
+
+</html>
