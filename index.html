@@ -334,29 +334,31 @@
             <button class="btn btn-primary" onclick="nextSlide()">Hah, di mana?! 🔍</button>
         </div>
 
-        <!-- ════════════════ SLIDE 19 — CLUE PILIHAN ════════════════ -->
+        <!-- ════════════════ SLIDE 19 — GIFT REVEAL ════════════════ -->
         <div class="slide bg-night" data-slide="19">
-            <div class="slide-label">Pilih Petunjukmu</div>
+            <div class="slide-label">Final Clue</div>
             <h2 class="slide-title" style="font-size: clamp(18px,5vw,24px)">
-                Clue apa yang kamu<br />
-                <span class="highlight">mau coba dulu?</span>
+                Oke, ternyata aku<br />
+                <span class="highlight">nggak ngumpetin di rumah 😅</span>
             </h2>
-            <div class="clue-opts">
-                <button class="clue-opt" onclick="showClue('lemari')">
-                    <span class="opt-icon">👗</span> Tempat pakaian kita disimpan
+            <p class="slide-body" style="max-width:320px">
+                Aku kira kamu bakal nemu sendiri… tapi sepertinya ada satu tempat yang belum kamu cek 👀
+            </p>
+
+            <div class="clue-opts" id="clueOptions">
+                <button class="clue-opt" onclick="showClueStep('wrong', event)">
+                    <span class="opt-icon">🤔</span> Coba cek petunjuk lama dulu
                 </button>
-                <button class="clue-opt" onclick="showClue('bantal')">
-                    <span class="opt-icon">🛏️</span> Tempat kepala kita beristirahat
-                </button>
-                <button class="clue-opt" onclick="showClue('sajadah')">
-                    <span class="opt-icon">🧎</span> Tempat kita biasa bersujud
+                <button class="clue-opt" onclick="showClueStep('real', event)">
+                    <span class="opt-icon">🧳</span> Kasih clue yang bener dong
                 </button>
             </div>
+
             <div class="clue-reveal" id="clueReveal">
-                <div class="clue-number">!</div>
+                <div class="clue-number" id="clueBadge">!</div>
                 <p class="clue-reveal-text" id="clueText"></p>
-                <button class="btn btn-ghost" onclick="nextSlide()"
-                    style="margin-top:16px;font-size:13px;padding:10px 22px">Sudah ketemu! ✅</button>
+                <button class="btn btn-primary" id="clueActionBtn" onclick="nextSlide()"
+                    style="display:none;margin-top:16px;font-size:13px;padding:10px 22px">Aku cek sekarang 💌</button>
             </div>
         </div>
 
