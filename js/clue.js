@@ -1,8 +1,8 @@
 // ── CLUE / TREASURE HUNT ──────────────────────────────────────
 const CLUES = {
-    lemari: '👗 Cari di tempat di mana pakaian kita tersimpan — buka pelan-pelan, ada yang menunggu di sana.',
-    bantal: '🛏️ Cek di tempat kepala kita beristirahat setiap malam — angkat bantalmu ya, ada kejutan di bawahnya!',
-    sajadah: '🧎 Temukan di tempat kita biasa bersujud berdua — cek di bawah atau di lipatan sajadah kita.',
+    lemari: '👗 Kadonya belum sampai rumah sayang — masih di DC Cakung dulu. Jadi clue kali ini: sabar bentar yaa, hadiahmu lagi otw ke kamu 🤍',
+    bantal: '🛏️ Kadonya belum sampai rumah sayang — masih di DC Cakung dulu. Jadi clue kali ini: sabar bentar yaa, hadiahmu lagi otw ke kamu 🤍',
+    sajadah: '🧎 Kadonya belum sampai rumah sayang — masih di DC Cakung dulu. Jadi clue kali ini: sabar bentar yaa, hadiahmu lagi otw ke kamu 🤍',
 };
 
 function showClue(type) {
